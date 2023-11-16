@@ -1,0 +1,10 @@
+{
+  "devDependencies": {
+    "tailwindcss": "^3.3.5"
+  },
+  "dependencies": {
+    "@octokit/core": "^5.0.1",
+    "@octokit/rest": "^20.0.2",
+    "octokit": "^3.1.2"
+  }
+}
