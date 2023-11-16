@@ -579,6 +579,10 @@ video {
   display: grid;
 }
 
+.h-8 {
+  height: 2rem;
+}
+
 .w-1\/3 {
   width: 33.333333%;
 }
@@ -589,6 +593,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.w-8 {
+  width: 2rem;
 }
 
 .max-w-6xl {
@@ -868,6 +876,11 @@ video {
 .hover\:text-blue-900:hover {
   --tw-text-opacity: 1;
   color: rgb(30 58 138 / var(--tw-text-opacity));
+}
+
+.hover\:text-purple-300:hover {
+  --tw-text-opacity: 1;
+  color: rgb(216 180 254 / var(--tw-text-opacity));
 }
 
 .hover\:underline:hover {
