@@ -68,7 +68,7 @@ async function getRepositories() {
             const languages = languagesForRepos[i][repo.name];
 
             const repoCard = document.createElement('div');
-            repoCard.classList.add('border', 'p-4');
+            repoCard.classList.add('border', 'p-4', 'rounded-md', 'mb-4', 'shadow-md', 'hover:shadow-lg', 'transition-all', 'duration-300', 'ease-in-out', 'dark:hover:bg-purple-800', 'bg-opacity-20', 'bg-gray-900', 'hover:bg-opacity-100', 'dark:hover:text-white', 'cursor-default', 'flex', 'flex-col', 'h-full', 'hover:scale-105', 'hover:shadow-xl', 'hover:bg-gray-200', 'dark:hover:bg-purple-800');
 
             const repoName = document.createElement('h3');
             repoName.classList.add('text-xl', 'font-semibold', 'mb-2');
@@ -78,7 +78,8 @@ async function getRepositories() {
             repoDescription.textContent = repo.description || '';
 
             const languagesUsed = document.createElement('p');
-            languagesUsed.classList.add('mt-2'); // Add margin top
+            languagesUsed.classList.add('flex', 'flex-wrap', 'overflow-hidden');
+
 
             languages.forEach(language => {
                 if (!languageColors[language]) {
@@ -95,7 +96,7 @@ async function getRepositories() {
             const repoLink = document.createElement('a');
             repoLink.href = repo.html_url;
             repoLink.textContent = 'View on GitHub';
-            repoLink.classList.add('text-blue-500', 'hover:underline');
+            repoLink.classList.add('text-blue-500', 'hover:underline' ,'block', 'mt-auto');
 
             repoCard.appendChild(repoName);
             repoCard.appendChild(repoDescription);
@@ -103,6 +104,9 @@ async function getRepositories() {
             repoCard.appendChild(repoLink);
 
             repoListElement.appendChild(repoCard);
+
+            const footer = document.getElementById('pageFooter');
+            footer.classList.remove('hidden');
         }
     } catch (error) {
         console.error("Error fetching repositories:", error);
