@@ -9,36 +9,30 @@
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/85618156?v=4">
     <title>Justin Jongstra</title>
     <link href="./dist/output.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = 'views/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+    </script>
 
     <script src="./src/main.js" type="module">
     </script>
 </head>
 
 <body class="bg-gradient-to-r dark:from-indigo-900 dark:to-purple-700 text-black dark:text-gray-300 transition duration-300 ease-in-out from-gray-100 to-purple-200">
-<header class="sticky top-0 bg-opacity-50 bg-gray-900 shadow bg-blur w-full py-4 px-6 z-10">
+<header class="md:sticky top-0 bg-opacity-50 bg-gray-900 shadow bg-blur w-full py-4 px-6 z-10">
     <nav class="flex items-center justify-between">
         <div class="text-2xl font-bold">Justin Jongstra</div>
-        <ul class="flex space-x-4">
-            <a href="https://github.com/Justin0122" target="_blank">
-                <img src="./src/svg/github.svg" alt="GitHub">
-            </a>
-            <a href="https://www.linkedin.com/in/justin-jongstra-11b873207/" target="_blank">
-                <img src="./src/svg/linkedin.svg" alt="LinkedIn">
-            </a>
-            <a href="https://www.instagram.com/justin._x3/" target="_blank">
-                <img src="./src/svg/instagram.svg" alt="Instagram">
-            </a>
-            <a href="https://packagist.org/packages/justin0122/" target="_blank">
-                <img src="./src/svg/packagist.svg" alt="Packagist">
-            </a>
-            <a href="mailto:justin@justinjongstra.nl" class="hover:text-purple-300 transition duration-300">
-                <img src="./src/svg/mailto.svg" alt="Mailto">
-            </a>
-        </ul>
+        <div data-include="links"></div>
     </nav>
 </header>
 
-<main class="max-w-6xl mx-auto py-8">
+<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4">
     <section id="about" class="mb-8">
         <h2 class="text-3xl font-bold mb-4">About Me</h2>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -66,7 +60,7 @@
     </section>
     <section id="repositories">
         <h2 class="text-3xl font-bold mb-4">Repositories</h2>
-        <div id="repoList" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        <div id="repoList" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4"></div>
     </section>
 
     <section id="contact">
@@ -76,6 +70,9 @@
 
 <footer id="pageFooter"
         class="bg-gray-900 text-white py-6 text-center bottom-0 w-full bg-opacity-80 shadow bg-blur hidden">
+    <div class="flex flex-col sm:flex-row justify-center items-center md:hidden" id="footerLinks">
+        <div data-include="links"></div>
+    </div>
     <p>&copy; 2023 Justin Jongstra. All rights reserved.</p>
 </footer>
 
