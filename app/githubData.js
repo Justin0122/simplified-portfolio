@@ -1,5 +1,3 @@
-const { Octokit } = require("@octokit/rest");
-
 async function getLanguagesForRepo(octokit, owner, repo) {
     try {
         const languagesResponse = await octokit.request('GET /repos/{owner}/{repo}/languages', {
