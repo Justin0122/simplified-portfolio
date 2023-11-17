@@ -6,7 +6,7 @@ const moment = require('moment');
 require('dotenv').config();
 
 const app = express();
-const port = 3000;
+const port = 3001;
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
