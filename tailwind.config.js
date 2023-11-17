@@ -1,9 +1,8 @@
-/** @type {import('tailwindcss').Config} */
 module.exports = {
-  //use index.html as a template for tailwind classes
-  content: ['./index.html'],
+  mode: 'jit',
+  content: ['./index.html', './src/**/*.js'], // Include JavaScript files
   theme: {
     extend: {},
   },
   plugins: [],
-}
+};
