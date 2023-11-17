@@ -6,7 +6,7 @@ const octokit = new Octokit({
 });
 
 function getRandomColor() {
-    const letters = '89ABCDEF'; // Using higher values for lighter shades
+    const letters = '89ABCDEF';
     let color = '#';
     for (let i = 0; i < 6; i++) {
         color += letters[Math.floor(Math.random() * letters.length)];
@@ -56,10 +56,10 @@ async function getLanguagesForRepo(owner, repo) {
             owner,
             repo,
         });
-        return { [repo]: Object.keys(languagesResponse.data) };
+        return { [repo]: languagesResponse.data };
     } catch (error) {
         console.error(`Error fetching languages for ${owner}/${repo}:`, error);
-        return { [repo]: [] };
+        return { [repo]: {} };
     }
 }
 
@@ -89,6 +89,8 @@ async function getRepositories() {
             const repo = myRepositories[i];
             const languages = languagesForRepos[i][repo.name];
 
+            const totalSize = Object.values(languages).reduce((acc, val) => acc + val, 0);
+
             const repoCard = document.createElement('div');
             repoCard.classList.add('border', 'p-4', 'rounded-md', 'mb-4', 'shadow-md', 'hover:shadow-lg', 'transition-all', 'duration-300', 'ease-in-out', 'dark:hover:bg-purple-800', 'bg-opacity-20', 'bg-gray-900', 'hover:bg-opacity-100', 'dark:hover:text-white', 'cursor-default', 'flex', 'flex-col', 'h-full', 'hover:scale-105', 'hover:shadow-xl', 'hover:bg-gray-200', 'dark:hover:bg-purple-800');
 
@@ -99,22 +101,19 @@ async function getRepositories() {
             const repoDescription = document.createElement('p');
             repoDescription.textContent = repo.description || '';
 
-            const languagesUsed = document.createElement('p');
+            const languagesUsed = document.createElement('div');
             languagesUsed.classList.add('flex', 'flex-wrap', 'overflow-hidden');
 
-
-            languages.forEach(language => {
-                if (!languageColors[language]) {
-                    languageColors[language] = getColor(language);
-                }
-
-                const languageTag = document.createElement('span');
-                languageTag.textContent = language;
-                //make the text color the inverse of the background color
-                languageTag.classList.add('px-2', 'py-1', 'text-xs', 'font-semibold', 'mr-2', 'mb-2', 'rounded' ,'text-black');
-                languageTag.style.backgroundColor = languageColors[language]; // Assign stored color for each language
+            for (const [language, size] of Object.entries(languages)) {
+                const percentage = ((size / totalSize) * 100).toFixed(1);
+                const languageTag = document.createElement('div');
+                languageTag.textContent = `${language} ${percentage}%`;
+                languageTag.classList.add('px-2', 'py-1', 'text-xs', 'font-semibold', 'mr-2', 'mb-2', 'rounded', 'text-black');
+                languageTag.style.backgroundColor = getColor(language);
                 languagesUsed.appendChild(languageTag);
-            });
+            }
+
+            //get the language
 
             const repoLink = document.createElement('a');
             repoLink.href = repo.html_url;
