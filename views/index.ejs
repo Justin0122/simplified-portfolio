@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Justin Jongstra">
+    <meta property="og:description" content="Justin Jongstra's minimalistic portfolio website.">
+    <meta property="og:image" content="https://avatars.githubusercontent.com/u/85618156?v=4">
+
+    <title>Justin Jongstra</title>
+
+    <link href="style.css" rel="stylesheet">
+    <script src="jquery.min.js"></script>
+    <script src="anime.min.js"></script>
+    <script>
+        $(function () {
+            var includes = $('[data-include]')
+            $.each(includes, function () {
+                var file = 'components/' + $(this).data('include') + '.html'
+                $(this).load(file)
+            })
+        })
+
+    </script>
+
+    <style>
+        .contact-form form {
+            transition: max-height 0.3s ease-in-out;
+        }
+
+        .contact-form form.hidden {
+            max-height: 0;
+        }
+
+    </style>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/85618156?v=4" type="image/x-icon"/>
+</head>
+
+<body class="bg-gradient-to-r dark:from-indigo-900 dark:to-purple-700 text-black dark:text-gray-300 transition duration-300 ease-in-out from-gray-100 to-purple-200">
+<header class="md:sticky top-0 bg-opacity-50 bg-gray-900 shadow bg-blur w-full py-4 px-6 z-10">
+    <nav class="flex items-center justify-between">
+        <div class="text-2xl font-bold">Justin Jongstra</div>
+        <div data-include="links"></div>
+    </nav>
+</header>
+
+<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4">
+    <section id="about" class="mb-8">
+        <h2 class="text-3xl font-bold mb-4">About Me</h2>
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+            <div class="w-full sm:w-1/3 px-4">
+                <img id="profilePicture" class="rounded-full mx-auto mb-4" alt="Justin Jongstra"
+                     src="https://avatars.githubusercontent.com/u/85618156?v=4">
+            </div>
+            <div class="w-full sm:w-2/3 dark:bg-gray-900 bg-opacity-50 rounded-lg p-4 shadow bg-blur cursor-default bg-gray-100" id="aboutText">
+                <p class="text-lg">
+                    This is my minimalistic version of my
+                    <a href="https://justinjongstra.nl" class="underline hover:text-blue-300 transition duration-300">
+                        portfolio website
+                    </a>.
+                    I am a student at
+                    <a href="https://https://www.rijnijssel.nl/"
+                       class="focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 underline hover:no-underline">
+                        <span class="text-orange-400 dark:text-orange-500">Rijn</span><span
+                                class="text-purple-400 dark:text-purple-500">IJssel</span>
+                    </a>
+                    and I am currently studying for my MBO (VET) Software Developer diploma.
+                    <br><br>
+                    I'm passionate about Laravel, Livewire, Tailwind CSS.
+                </p>
+            </div>
+        </div>
+    </section>
+    <section id="repositories">
+        <h2 class="text-3xl font-bold mb-4">Repositories</h2>
+        <div id="repoList" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
+            <% repos.forEach(repo => { %>
+            <div id="repoCard<%= repo.id %>">
+                <%- include('repoItem', { repo: repo }) %>
+            </div>
+            <% }) %>
+        </div>
+    </section>
+
+
+    <section id="contact" class="mt-8">
+        <div data-include="contact-form"></div>
+    </section>
+</main>
+
+<footer id="pageFooter"
+        class="bg-gray-900 text-white py-6 text-center bottom-0 w-full bg-opacity-80 shadow bg-blur">
+    <div class="flex flex-col sm:flex-row justify-center items-center md:hidden" id="footerLinks">
+        <div data-include="links"></div>
+    </div>
+    <p>&copy; 2023 Justin Jongstra. All rights reserved.</p>
+</footer>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        anime({
+            targets: '#profilePicture',
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeInOutQuad',
+            delay: 500
+        });
+
+        anime({
+            targets: '#aboutText',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 800,
+            easing: 'easeInOutQuad',
+            delay: 1000
+        });
+        const cards = document.querySelectorAll('[id^="repoCard"]');
+        anime({
+            targets: cards,
+            translateY: [20, 0],
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeInOutQuad',
+            delay: anime.stagger(200, { start: 500 }),
+        });
+    });
+</script>
+</body>
+
+</html>
