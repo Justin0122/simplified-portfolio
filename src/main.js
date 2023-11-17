@@ -78,7 +78,8 @@ async function getRepositories() {
             repoDescription.textContent = repo.description || '';
 
             const languagesUsed = document.createElement('p');
-            languagesUsed.classList.add('mt-2'); // Add margin top
+            languagesUsed.classList.add('flex', 'flex-wrap', 'overflow-hidden');
+
 
             languages.forEach(language => {
                 if (!languageColors[language]) {
