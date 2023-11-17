@@ -6,13 +6,33 @@ const octokit = new Octokit({
 });
 
 function getRandomColor() {
-    const letters = '0123456789ABCDEF';
+    const letters = '89ABCDEF'; // Using higher values for lighter shades
     let color = '#';
     for (let i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
+        color += letters[Math.floor(Math.random() * letters.length)];
     }
     return color;
 }
+
+function getColor(language) {
+    switch (language.toLowerCase()) {
+        case 'php':
+            return '#5b5bff';
+        case 'javascript':
+            return '#FFFF00';
+        case 'blade':
+            return '#FF0000';
+        case 'css':
+            return '#FF00FF';
+        case 'html':
+            return '#FF00FF';
+        case 'python':
+            return '#87ff87';
+        default:
+            return getRandomColor(); // If language not specified, use random color
+    }
+}
+
 
 async function getUser() {
     try {
@@ -54,9 +74,11 @@ async function getRepositories() {
 
         const repositories = response.data;
 
-        const myRepositories = repositories.filter(repo =>
-            repo.owner.login === 'Justin0122' && !repo.fork && !repo.archived && !repo.disabled && !repo.private
-        );
+        const myRepositories = repositories
+            .filter(repo =>
+                repo.owner.login === 'Justin0122' && !repo.fork && !repo.archived && !repo.disabled && !repo.private
+            )
+            .sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
         const repoListElement = document.getElementById('repoList');
 
@@ -83,12 +105,13 @@ async function getRepositories() {
 
             languages.forEach(language => {
                 if (!languageColors[language]) {
-                    languageColors[language] = getRandomColor();
+                    languageColors[language] = getColor(language);
                 }
 
                 const languageTag = document.createElement('span');
                 languageTag.textContent = language;
-                languageTag.classList.add('px-2', 'py-1', 'text-white', 'rounded-md', 'mr-2', 'mb-2');
+                //make the text color the inverse of the background color
+                languageTag.classList.add('px-2', 'py-1', 'text-xs', 'font-semibold', 'mr-2', 'mb-2', 'rounded' ,'text-black');
                 languageTag.style.backgroundColor = languageColors[language]; // Assign stored color for each language
                 languagesUsed.appendChild(languageTag);
             });
@@ -101,7 +124,18 @@ async function getRepositories() {
             repoCard.appendChild(repoName);
             repoCard.appendChild(repoDescription);
             repoCard.appendChild(languagesUsed);
+
+            repoListElement.appendChild(repoCard);
+
+
+            const metadata = document.createElement('p');
+            metadata.classList.add('text-sm', 'text-gray-500', 'mt-2');
+            metadata.textContent = `Created: ${new Date(repo.created_at).toLocaleDateString()} - Updated: ${new Date(repo.updated_at).toLocaleDateString()}`;
+            repoCard.appendChild(metadata);
+
+
             repoCard.appendChild(repoLink);
+
 
             repoListElement.appendChild(repoCard);
 
