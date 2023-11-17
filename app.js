@@ -12,6 +12,7 @@ const port = 3000;
 app.set('view engine', 'ejs');
 
 app.get('/', async (req, res) => {
+    console.log("user visited root route");
     try {
         const octokit = new Octokit({
             auth: process.env.GITHUB_TOKEN,
