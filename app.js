@@ -4,6 +4,7 @@ const { Octokit } = require("@octokit/rest");
 const githubData = require("./app/githubData.js");
 const moment = require('moment');
 require('dotenv').config();
+const anime = require('animejs');
 
 const app = express();
 const port = 3001;
@@ -20,7 +21,7 @@ app.get('/', async (req, res) => {
 
         const repos = await githubData.getRepositories(octokit);
 
-        res.render('index', { repos, moment });
+        res.render('index', { repos, moment, anime });
     } catch (error) {
         console.error("Error handling root route:", error);
         res.status(500).send('Internal Server Error');
@@ -28,6 +29,8 @@ app.get('/', async (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'node_modules/animejs/lib')));
+app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);

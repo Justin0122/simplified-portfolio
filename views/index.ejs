@@ -7,9 +7,12 @@
     <meta property="og:title" content="Justin Jongstra">
     <meta property="og:description" content="Justin Jongstra's minimalistic portfolio website.">
     <meta property="og:image" content="https://avatars.githubusercontent.com/u/85618156?v=4">
+
     <title>Justin Jongstra</title>
+
     <link href="style.css" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="jquery.min.js"></script>
+    <script src="anime.min.js"></script>
     <script>
         $(function () {
             var includes = $('[data-include]')
@@ -18,6 +21,7 @@
                 $(this).load(file)
             })
         })
+
     </script>
 
     <style>
@@ -49,7 +53,7 @@
                 <img id="profilePicture" class="rounded-full mx-auto mb-4" alt="Justin Jongstra"
                      src="https://avatars.githubusercontent.com/u/85618156?v=4">
             </div>
-            <div class="w-full sm:w-2/3 dark:bg-gray-900 bg-opacity-50 rounded-lg p-4 shadow bg-blur cursor-default bg-gray-100">
+            <div class="w-full sm:w-2/3 dark:bg-gray-900 bg-opacity-50 rounded-lg p-4 shadow bg-blur cursor-default bg-gray-100" id="aboutText">
                 <p class="text-lg">
                     This is my minimalistic version of my
                     <a href="https://justinjongstra.nl" class="underline hover:text-blue-300 transition duration-300">
@@ -72,7 +76,9 @@
         <h2 class="text-3xl font-bold mb-4">Repositories</h2>
         <div id="repoList" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
             <% repos.forEach(repo => { %>
+            <div id="repoCard<%= repo.id %>">
                 <%- include('repoItem', { repo: repo }) %>
+            </div>
             <% }) %>
         </div>
     </section>
@@ -91,6 +97,35 @@
     <p>&copy; 2023 Justin Jongstra. All rights reserved.</p>
 </footer>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        anime({
+            targets: '#profilePicture',
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeInOutQuad',
+            delay: 500
+        });
+
+        anime({
+            targets: '#aboutText',
+            opacity: [0, 1],
+            translateY: [20, 0],
+            duration: 800,
+            easing: 'easeInOutQuad',
+            delay: 1000
+        });
+        const cards = document.querySelectorAll('[id^="repoCard"]');
+        anime({
+            targets: cards,
+            translateY: [20, 0],
+            opacity: [0, 1],
+            duration: 500,
+            easing: 'easeInOutQuad',
+            delay: anime.stagger(200, { start: 500 }),
+        });
+    });
+</script>
 </body>
 
 </html>
