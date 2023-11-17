@@ -1,0 +1,39 @@
+<div class="contact-form flex flex-col items-center justify-center">
+    <button id="toggleForm"
+            class="text-xl font-semibold mb-4 bg-purple-600 text-white rounded-lg p-2 focus:outline-none">
+        Contact Me
+    </button>
+    <form action="mailto:justin@justinjongstra.nl" method="get" enctype="text/plain" class="max-h-0 hidden">
+        <input type="text" name="yourEmail" placeholder="Your email"
+               class="w-full rounded-lg p-4 shadow bg-blur bg-gray-100 mb-4 dark:bg-gray-900 dark:text-gray-300 transition duration-300 active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600">
+        <input type="text" name="subject" placeholder="Subject"
+               class="w-full rounded-lg p-4 shadow bg-blur bg-gray-100 mb-4 dark:bg-gray-900 dark:text-gray-300 transition duration-300 active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600">
+        <textarea name="body" id="message" cols="30" rows="10" placeholder="Your message"
+                  class="w-full rounded-lg p-4 shadow bg-blur bg-gray-100 mb-4 dark:bg-gray-900 dark:text-gray-300 transition duration-300 active:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-purple-600"></textarea>
+        <button type="submit"
+                class="w-full rounded-lg p-4 shadow bg-blur bg-gray-100 mb-4 dark:bg-gray-900 dark:text-gray-300 transition duration-300 hover:bg-purple-400 active:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-600">
+            Send
+        </button>
+    </form>
+</div>
+
+<script>
+    const toggleButton = document.getElementById('toggleForm');
+    const form = document.querySelector('.contact-form form');
+
+    toggleButton.addEventListener('click', () => {
+        form.classList.toggle('hidden');
+        if (!form.classList.contains('hidden')) {
+            const footer = document.getElementById('pageFooter');
+            footer.classList.add('hidden');
+            form.style.maxHeight = `${form.scrollHeight}px`;
+            form.scrollIntoView({behavior: "smooth", block: "center"});
+            setTimeout(() => {
+                footer.classList.remove('hidden');
+            }, 200);
+
+        } else {
+            form.style.maxHeight = null;
+        }
+    });
+</script>

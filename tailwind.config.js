@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  content: ['./index.html', './src/**/*.js'], // Include JavaScript files
+  content: ['./views/*.ejs', './public/**/*.html'],
   theme: {
     extend: {},
   },

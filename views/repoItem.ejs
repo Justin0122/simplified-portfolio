@@ -1,0 +1,37 @@
+<div class="border p-4 rounded-md mb-4 shadow:md hover:shadow-lg transition-all duration-300 ease-in-out dark:hover:bg-purple-800 bg-opacity-20 bg-gray-900 hover:bg-opacity-100 dark:hover:text-white cursor-default flex flex-col relative">
+    <div>
+        <h2 class="text-lg font-semibold mb-2 inline-flex items-center">
+            <%= repo.name %>
+        </h2>
+        <% if (repo.stargazers_count) { %>
+            <span class="inline-flex text-white px-2 py-1 text-xs font-bold mr-2 mb-2">
+                <%= repo.stargazers_count %> ⭐
+            </span>
+        <% } %>
+        <% if (repo.description) { %>
+            <p class="mb-2">
+                <%= repo.description %>
+            </p>
+        <% } %>
+        <% const totalSize = Object.values(repo.languages).reduce((acc, val) => acc + val, 0); %>
+        <% Object.entries(repo.languages).forEach(([lang, size]) => { %>
+            <% const percentage = ((size / totalSize) * 100).toFixed(1); %>
+            <span class="inline-block bg-purple-600 text-white rounded-full px-2 py-1 text-xs font-bold mr-2 mb-2">
+                <%= lang %> <span class="text-xs text-gray-300"><%= percentage %>%</span>
+            </span>
+        <% }) %>
+    </div>
+    <div id="metadata" class="absolute bottom-0 right-0 flex flex-col text-lg text-gray-300">
+        <a href="<%= repo.repo_url %>" class="text-blue-400 hover:text-blue-300 transition duration-300 underline mb-2 mr-2">
+            View on GitHub
+        </a>
+    </div>
+    <span class="text-sm text-gray-300 mt-auto flex flex-col">
+        <span>
+            Created <%= moment(repo.created_at).fromNow() %>
+        </span>
+        <span>
+            Updated <%= moment(repo.updated_at).fromNow() %>
+        </span>
+    </span>
+</div>
