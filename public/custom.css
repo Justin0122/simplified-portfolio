@@ -1,7 +1,0 @@
-.contact-form form {
-    transition: max-height 0.3s ease-in-out;
-}
-
-.contact-form form.hidden {
-    max-height: 0;
-}
