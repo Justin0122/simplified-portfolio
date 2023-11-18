@@ -22,41 +22,57 @@
 </head>
 
 <body id="randomGradientBody" class="bg-gradient-to-r dark:from-indigo-900 dark:to-purple-700 text-black dark:text-gray-300 transition duration-300 ease-in-out from-gray-100 to-purple-200">
-<div class="cursor"></div>
-<header class="md:sticky top-0 bg-opacity-50 bg-gray-900 shadow bg-blur w-full py-4 px-6 z-10">
+<header class="md:sticky top-0 bg-opacity-50 bg-gray-900 shadow bg-blur w-full py-4 px-6 z-10 relative">
     <nav class="flex items-center justify-between">
         <div class="text-2xl font-bold">Justin Jongstra</div>
         <div data-include="links"></div>
     </nav>
 </header>
 
-<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4">
-    <section id="about" class="mb-8">
+<div class="carousel-inner" style="z-index: 1;">
+    <div class="carousel-item">
+        <img src="img/Mountainbike.jpg" alt="Image 2">
+    </div>
+    <div class="carousel-item">
+        <img src="img/Drawing.jpg" alt="Image 3">
+    </div>
+</div>
+
+<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-10 relative">
+    <section id="about" class="mb-24">
         <h2 class="text-3xl font-bold mb-4">About Me</h2>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-            <div class="w-full sm:w-1/3 px-4">
+            <div class="w-full sm:w-1/3 px-4" style="position: relative; z-index: 2;">
                 <img id="profilePicture" class="rounded-full mx-auto mb-4" alt="Justin Jongstra"
                      src="https://avatars.githubusercontent.com/u/85618156?v=4">
             </div>
+
             <div class="w-full sm:w-2/3 dark:bg-gray-900 bg-opacity-50 rounded-lg p-4 shadow bg-blur cursor-default bg-gray-100" id="aboutText">
                 <p class="text-lg">
-                    This is my minimalistic version of my
+                    Welcome to my portfolio! I've designed this minimalistic space to showcase my work.
                     <a href="https://justinjongstra.nl" class="underline hover:text-blue-300 transition duration-300">
-                        portfolio website
-                    </a>.
-                    I am a student at
-                    <a href="https://https://www.rijnijssel.nl/"
-                       class="focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 underline hover:no-underline">
-                        <span class="text-orange-400 dark:text-orange-500">Rijn</span><span
-                                class="text-purple-400 dark:text-purple-500">IJssel</span>
+                        Check out my main website here.
                     </a>
-                    and I am currently studying for my MBO (VET) Software Developer diploma.
                     <br><br>
-                    I'm passionate about Laravel, Livewire, Tailwind CSS.
+                    I'm currently pursuing my MBO (VET) Software Developer diploma at
+                    <a href="https://www.rijnijssel.nl/" class="focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500 underline hover:no-underline">
+                        <span class="text-orange-400 dark:text-orange-500">Rijn</span><span class="text-purple-400 dark:text-purple-500">IJssel</span>
+                    </a>.
+                    I'm deeply passionate about technologies like Laravel, Livewire, and Tailwind CSS, and I'm always eager to expand my expertise in these areas.
+                    <br><br>
+                    Apart from coding, I enjoy mountain biking, drawing, and playing video games.
+                    <br><br>
+
+                    <span class="text-lg font-bold">My skills:</span>
+                    <br>
+                    <span class="text-lg font-light">
+                        Laravel, Livewire, Tailwind CSS, HTML, CSS, JavaScript, PHP, MySQL, Git, GitHub, Linux, Windows, and more.
+                    </span>
                 </p>
             </div>
         </div>
     </section>
+
     <section id="repositories">
         <h2 class="text-3xl font-bold mb-4">Repositories</h2>
         <div id="repoList" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
@@ -80,6 +96,7 @@
     </div>
     <p>&copy; 2023 Justin Jongstra. All rights reserved.</p>
 </footer>
+
 
 </body>
 

@@ -7,9 +7,9 @@ document.addEventListener('DOMContentLoaded', function () {
         })
     })
 
-    const lightColors = ['#FF6347', '#4682B4', '#7700bd', '#FFA500',
-        '#9370DB', '#00FFFF', '#FFD700',
-        '#FF69B4'];
+    const lightColors = ['#FF6347', '#949cb8', '#7700bd', '#feb05b',
+        '#9370DB', '#4eafda', '#c2b954',
+        '#e8aead'];
     const darkColors = lightColors.map(color => {
         return darkenColor(color, 50);
     });
