@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>404 - Page Not Found</title>
+    <link href="../style.css" rel="stylesheet">
+    <script src="anime.min.js"></script>
+</head>
+
+<body class="bg-gray-900 text-white font-sans text-center py-16 px-4 min-h-screen overflow-hidden flex flex-col justify-center items-center">
+<div class="row">
+    <h1 class="text-7xl font-bold mb-8 sm:text-9xl" id="errorHeading">404</h1>
+    <p class="text-3xl font-light mb-8 sm:text-7xl" id="errorText">Page Not Found</p>
+    <a href="/"
+       class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-4 px-8 border border-gray-400 rounded shadow mt-4 inline-block transition duration-200 sm:py-3 sm:px-6 sm:text-5xl"
+       id="goHome">
+        Go Home
+    </a>
+</div>
+
+<script>
+    anime({
+        targets: '#errorHeading',
+        translateY: [-10, 10],
+        scale: [1, 1.2],
+        direction: 'alternate',
+        loop: true,
+        easing: 'spring(1, 80, 10, 0)'
+    })
+
+
+    anime({
+        targets: '#goHome',
+        opacity: [0, 1],
+        duration: 800,
+        loop: true,
+        direction: 'alternate',
+        easing: 'easeInOutQuad'
+    });
+
+    document.querySelector('#goHome').addEventListener('mouseenter', function () {
+        anime({
+            targets: '#goHome',
+            scale: [1, 1.5],
+            duration: 200,
+            easing: 'easeInOutQuad'
+        });
+    });
+
+    document.querySelector('#goHome').addEventListener('mouseleave', function () {
+        anime({
+            targets: '#goHome',
+            scale: [1.1, 1],
+            duration: 200,
+            easing: 'easeInOutQuad'
+        });
+    });
+
+</script>
+</body>
+
+</html>

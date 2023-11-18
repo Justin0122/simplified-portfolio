@@ -71,4 +71,41 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         }
     }
+
+    const carouselItems = document.querySelectorAll('.carousel-item');
+    let index = 0;
+
+    function animateCarousel() {
+        carouselItems.forEach((item, i) => {
+            if (i !== index) {
+                item.style.opacity = '0';
+            }
+        });
+
+        anime({
+            targets: carouselItems[index],
+            opacity: 1,
+            easing: 'easeInOutQuad',
+            duration: 1000,
+            complete: () => {
+                setTimeout(() => {
+                    anime({
+                        targets: carouselItems[index],
+                        opacity: 0,
+                        easing: 'easeInOutQuad',
+                        duration: 2000,
+                        complete: () => {
+                            index++;
+                            if (index >= carouselItems.length) {
+                                index = 0;
+                            }
+                            animateCarousel();
+                        }
+                    });
+                }, 3000);
+            }
+
+        });
+    }
+    animateCarousel();
 });

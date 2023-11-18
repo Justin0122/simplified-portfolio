@@ -41,6 +41,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules/animejs/lib')));
 app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 
+app.get('*', (req, res) => {
+    console.log("user visited a route that doesn't exist");
+    res.render('404', { moment, anime });
+});
+
+
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
