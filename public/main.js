@@ -34,8 +34,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const randomColor1 = colors[randomIndex1];
         const randomColor2 = colors[randomIndex2];
-
-        body.style.background = `linear-gradient(to right, ${randomColor1}, ${randomColor2})`;
+        if (window.innerWidth <= 768) {
+            body.style.background = `linear-gradient(${randomColor1}, ${randomColor2})`;
+        }else {
+            body.style.background = `linear-gradient(to right, ${randomColor1}, ${randomColor2})`;
+        }
+        window.addEventListener('resize', () => {
+            if (window.innerWidth <= 768) {
+                body.style.background = `linear-gradient(${randomColor1}, ${randomColor2})`;
+            }else {
+                body.style.background = `linear-gradient(to right, ${randomColor1}, ${randomColor2})`;
+            }
+        });
     }
 
     const isDarkMode = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
