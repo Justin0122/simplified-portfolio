@@ -12,16 +12,25 @@ const port = 3001;
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
+let cachedRepos = null;
+let lastFetched = null;
+const CACHE_DURATION = 3600000; // update repos every hour
+
 app.get('/', async (req, res) => {
     console.log("user visited root route");
     try {
-        const octokit = new Octokit({
-            auth: process.env.GITHUB_TOKEN,
-        });
+        const currentTime = Date.now();
 
-        const repos = await githubData.getRepositories(octokit);
+        // Check if the cached repos exist and are within the cache duration
+        if (!cachedRepos || !lastFetched || currentTime - lastFetched > CACHE_DURATION) {
+            const octokit = new Octokit({
+                auth: process.env.GITHUB_TOKEN,
+            });
+            cachedRepos = await githubData.getRepositories(octokit);
+            lastFetched = currentTime;
+        }
 
-        res.render('index', { repos, moment, anime });
+        res.render('index', { repos: cachedRepos, moment, anime });
     } catch (error) {
         console.error("Error handling root route:", error);
         res.status(500).send('Internal Server Error');
