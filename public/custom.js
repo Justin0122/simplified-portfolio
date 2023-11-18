@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function () {
         delay: 1000
     });
 
+    const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const cards = document.querySelectorAll('[id^="repoCard"]');
     const numRows = 2;
 
@@ -32,22 +33,42 @@ document.addEventListener('DOMContentLoaded', function () {
             }
         });
 
-        anime({
-            targets: leftCards,
-            translateX: ['-100%', 0],
-            opacity: [0, 1],
-            duration: 800,
-            easing: 'easeInOutQuad',
-            delay: anime.stagger(20, { start: 500, direction: 'reverse' }),
-        });
+        if (!isMobile) {
+            anime({
+                targets: leftCards,
+                translateX: ['-100%', 0],
+                opacity: [0, 1],
+                duration: 800,
+                easing: 'easeInOutQuad',
+                delay: anime.stagger(20, {start: 500, direction: 'reverse'}),
+            });
 
-        anime({
-            targets: rightCards,
-            translateX: ['100%', 0],
-            opacity: [0, 1],
-            duration: 800,
-            easing: 'easeInOutQuad',
-            delay: anime.stagger(20, { start: 500 }),
-        });
+            anime({
+                targets: rightCards,
+                translateX: ['100%', 0],
+                opacity: [0, 1],
+                duration: 800,
+                easing: 'easeInOutQuad',
+                delay: anime.stagger(20, {start: 500}),
+            });
+        } else{
+            anime({
+                targets: leftCards,
+                translateY: ['100%', 0],
+                opacity: [0, 1],
+                duration: 800,
+                easing: 'easeInOutQuad',
+                delay: anime.stagger(20, {start: 500}),
+            });
+
+            anime({
+                targets: rightCards,
+                translateY: ['100%', 0],
+                opacity: [0, 1],
+                duration: 800,
+                easing: 'easeInOutQuad',
+                delay: anime.stagger(20, {start: 500, direction: 'reverse'}),
+            });
+        }
     }
 });
