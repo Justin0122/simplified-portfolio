@@ -16,6 +16,24 @@ document.addEventListener('DOMContentLoaded', function () {
         delay: 1000
     });
 
+    anime({
+        targets: '#certificates',
+        translateY: [80, 0],
+        opacity: [0, 1],
+        duration: 800,
+        easing: 'easeInOutQuad',
+        delay: 500
+    });
+
+    anime({
+        targets: '#aspirations',
+        translateY: [100, 0],
+        opacity: [0, 1],
+        duration: 800,
+        easing: 'easeInOutQuad',
+        delay: 1000
+    });
+
     const isMobile = window.matchMedia('(max-width: 768px)').matches;
     const cards = document.querySelectorAll('[id^="repoCard"]');
     const numRows = 2;
