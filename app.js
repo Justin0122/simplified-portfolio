@@ -4,7 +4,6 @@ const { Octokit } = require("@octokit/rest");
 const githubData = require("./app/githubData.js");
 const moment = require('moment');
 require('dotenv').config();
-const anime = require('animejs');
 
 const app = express();
 const port = 3001;
@@ -17,7 +16,7 @@ let lastFetched = null;
 const CACHE_DURATION = 3600000; // update repos every hour
 
 app.get('/', async (req, res) => {
-    console.log("user visited root route");
+    console.log("user visited root route from:", req.ip);
     try {
         const currentTime = Date.now();
 
@@ -30,7 +29,7 @@ app.get('/', async (req, res) => {
             lastFetched = currentTime;
         }
 
-        res.render('index', { repos: cachedRepos, moment, anime });
+        res.render('index', { repos: cachedRepos, moment });
     } catch (error) {
         console.error("Error handling root route:", error);
         res.status(500).send('Internal Server Error');
@@ -40,10 +39,11 @@ app.get('/', async (req, res) => {
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules/animejs/lib')));
 app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
+app.use(express.static(path.join(__dirname, 'node_modules/marked')));
 
 app.get('*', (req, res) => {
     console.log("user visited a route that doesn't exist");
-    res.render('404', { moment, anime });
+    res.render('404', { moment });
 });
 
 

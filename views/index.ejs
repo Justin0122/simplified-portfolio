@@ -13,8 +13,11 @@
     <link href="style.css" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
 
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
     <script src="jquery.min.js"></script>
     <script src="anime.min.js"></script>
+    <script src="marked.min.js"></script>
     <script src="main.js"></script>
     <script src="custom.js"></script>
 
@@ -31,15 +34,15 @@
 
 <div class="carousel-inner" style="z-index: 1;">
     <div class="carousel-item">
-        <img src="img/Mountainbike.jpg" alt="Image 2">
+        <img src="img/Mountainbike.webp" alt="Image 2">
     </div>
     <div class="carousel-item">
-        <img src="img/Drawing.jpg" alt="Image 3">
+        <img src="img/Drawing.webp" alt="Image 3">
     </div>
 </div>
 
 <main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-10 relative">
-    <section id="about" class="mb-24">
+    <section id="about" class="md:mb-24 mb-16">
         <h2 class="text-3xl font-bold mb-4">About Me</h2>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
             <div class="w-full sm:w-1/3 px-4" style="position: relative; z-index: 2;">
@@ -73,7 +76,16 @@
         </div>
     </section>
 
-    <section id="repositories">
+    <section id="certificates">
+        <h2 class="text-3xl font-bold mb-4">Certificates</h2>
+        <div id="certificateList" class="grid sm:grid-cols-2 md:grid-cols-6 gap-4">
+            <a href="https://www.credly.com/badges/fdc5df64-f420-4fbb-81fe-82b9814091d8/public_url" target="_blank" rel="noopener noreferrer" class="rounded-lg bg-blur h-36 object-cover hover:opacity-80 transition duration-300 hover:scale-105 ease-in-out">
+                <img src="https://images.credly.com/size/340x340/images/3f36cda2-b4c2-46ba-a6d8-f11219631451/MTA-Security_Fundamentals-600x600.png" alt="MTA Security Fundamentals" class="rounded-lg bg-blur h-36 object-cover hover:opacity-80 transition duration-300 hover:scale-105 ease-in-out">
+            </a>
+        </div>
+    </section>
+
+    <section id="repositories" class="mt-8">
         <h2 class="text-3xl font-bold mb-4">Repositories</h2>
         <div id="repoList" class="grid sm:grid-cols-1 md:grid-cols-2 gap-4">
             <% repos.forEach(repo => { %>
@@ -81,6 +93,18 @@
                 <%- include('repoItem', { repo: repo }) %>
             </div>
             <% }) %>
+        </div>
+    </section>
+    <section id="aspirations" class="mt-8">
+        <h2 class="text-3xl font-bold mb-4">Aspirations</h2>
+        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition duration-300 ease-in-out transform hover:scale-105">
+            <p class="text-gray-700 dark:text-gray-300 mb-4">
+                I'm passionate about becoming a Full-Stack Laravel Developer. Currently, I'm focused on enhancing my skills in PHP, JavaScript, and C++, along with mastering Laravel, Livewire, and Tailwind CSS. I'm also exploring microcontrollers as a side interest.
+                <br><br>
+                My goal is to build innovative web applications that provide seamless user experiences and solve real-world problems.
+                <br><br>
+                If you have any exciting projects or opportunities, feel free to reach out! I'm eager to learn and grow in this dynamic field.
+            </p>
         </div>
     </section>
 
@@ -97,6 +121,12 @@
     <p>&copy; 2023 Justin Jongstra. All rights reserved.</p>
 </footer>
 
+<div id="modal" class="modal bg-gray-100 dark:bg-gray-900 dark:text-gray-300">
+    <div class="modal-content bg-gray-100 dark:bg-gray-900 dark:text-gray-300">
+        <span class="close">&times;</span>
+        <div id="readmeContainer" class="readme-container"></div>
+    </div>
+</div>
 
 </body>
 
