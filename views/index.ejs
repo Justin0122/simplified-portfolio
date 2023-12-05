@@ -13,8 +13,11 @@
     <link href="style.css" rel="stylesheet">
     <link href="custom.css" rel="stylesheet">
 
+    <script type="module" src="https://md-block.verou.me/md-block.js"></script>
+
     <script src="jquery.min.js"></script>
     <script src="anime.min.js"></script>
+    <script src="marked.min.js"></script>
     <script src="main.js"></script>
     <script src="custom.js"></script>
 
@@ -118,6 +121,12 @@
     <p>&copy; 2023 Justin Jongstra. All rights reserved.</p>
 </footer>
 
+<div id="modal" class="modal bg-gray-100 dark:bg-gray-900 dark:text-gray-300">
+    <div class="modal-content bg-gray-100 dark:bg-gray-900 dark:text-gray-300">
+        <span class="close">&times;</span>
+        <div id="readmeContainer" class="readme-container"></div>
+    </div>
+</div>
 
 </body>
 
