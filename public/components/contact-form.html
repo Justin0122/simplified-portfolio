@@ -23,25 +23,15 @@
 
     toggleButton.addEventListener('click', () => {
         const currentMaxHeight = window.getComputedStyle(form).maxHeight;
+        const formHeight = form.scrollHeight;
 
-        if (currentMaxHeight === '0px' || currentMaxHeight === 'none') {
-            anime({
-                targets: form,
-                maxHeight: form.scrollHeight + 'px',
-                duration: 500,
-                easing: 'easeInOutQuad',
-                update: function(animation) {
-                    form.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                },
-            });
-        } else {
-            anime({
-                targets: form,
-                maxHeight: '0px',
-                duration: 500,
-                easing: 'easeInOutQuad'
-            });
-        }
+        form.style.maxHeight = currentMaxHeight === '0px' ? formHeight + 'px' : '0px';
         toggleButton.innerText = toggleButton.innerText === 'Contact Me' ? 'Close' : 'Contact Me';
+
+        if (currentMaxHeight === '0px') {
+            setTimeout(() => {
+                window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+            }, 300);
+        }
     });
 </script>

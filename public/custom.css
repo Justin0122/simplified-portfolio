@@ -109,3 +109,13 @@ h2{
     text-shadow: 0 0 10px #000;
 }
 
+.contact-form form {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease-in-out;
+}
+
+h2, h1{
+    text-shadow: none;
+    color: #3e627a;
+}

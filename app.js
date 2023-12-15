@@ -37,7 +37,6 @@ app.get('/', async (req, res) => {
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'node_modules/animejs/lib')));
 app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, 'node_modules/marked')));
 
