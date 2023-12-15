@@ -16,11 +16,10 @@ let lastFetched = null;
 const CACHE_DURATION = 3600000; // update repos every hour
 
 app.get('/', async (req, res) => {
-    console.log("user visited root route from:", req.ip);
+    console.log("visited root route");
     try {
         const currentTime = Date.now();
 
-        // Check if the cached repos exist and are within the cache duration
         if (!cachedRepos || !lastFetched || currentTime - lastFetched > CACHE_DURATION) {
             const octokit = new Octokit({
                 auth: process.env.GITHUB_TOKEN,
@@ -41,7 +40,7 @@ app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, 'node_modules/marked')));
 
 app.get('*', (req, res) => {
-    console.log("user visited a route that doesn't exist");
+    console.log("visited 404 route");
     res.render('404', { moment });
 });
 
