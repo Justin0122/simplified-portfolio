@@ -39,31 +39,6 @@
         <img src="img/Drawing.webp" alt="Image 3">
     </div>
 </div>
-
-<script>
-    let slideIndex = 0;
-    carousel();
-
-    function carousel() {
-        let i;
-        let x = document.getElementsByClassName("carousel-item");
-
-        for (i = 0; i < x.length; i++) {
-            x[i].style.opacity = "0"; // Initially hide all images
-        }
-
-        slideIndex++;
-        if (slideIndex > x.length) {
-            slideIndex = 1;
-        }
-
-        x[slideIndex - 1].style.opacity = "1"; // Show the current image
-
-        setTimeout(carousel, 5000); // Change image every 5 seconds
-    }
-</script>
-
-
 <main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-10 relative">
     <section id="about" class="md:mb-24 mb-16">
         <h2 class="text-3xl font-bold mb-4">About Me</h2>

@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function () {
+    let slideIndex = 0;
+    carousel();
+
+    function carousel() {
+        let i;
+        let x = document.getElementsByClassName("carousel-item");
+
+        for (i = 0; i < x.length; i++) {
+            x[i].style.opacity = "0"; // Initially hide all images
+        }
+
+        slideIndex++;
+        if (slideIndex > x.length) {
+            slideIndex = 1;
+        }
+
+        x[slideIndex - 1].style.opacity = "1"; // Show the current image
+
+        setTimeout(carousel, 5000); // Change image every 5 seconds
+    }
     function renderMarkdown(markdown) {
         return marked.parse(markdown);
     }
