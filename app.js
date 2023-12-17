@@ -35,7 +35,21 @@ app.get('/', async (req, res) => {
         });
         images.sort(() => Math.random() - 0.5);
 
-        res.render('index', { repos: cachedRepos, moment, images: images });
+        const dataToSend = {
+            repos: cachedRepos,
+            moment,
+            images,
+            name: process.env.FULL_NAME,
+            avatar_url: process.env.PROFILE_PIC_URL,
+            website: process.env.WEBSITE_URL,
+            github: process.env.GITHUB_USERNAME,
+            linkedin: process.env.LINKEDIN_URL,
+            packagist: process.env.PACKAGIST_USERNAME,
+            email: process.env.EMAIL
+        };
+
+        res.render('index', dataToSend);
+
     } catch (error) {
         console.error("Error handling root route:", error);
         res.status(500).send('Internal Server Error');
@@ -47,7 +61,7 @@ app.use(express.static(path.join(__dirname, 'node_modules/jquery/dist')));
 app.use(express.static(path.join(__dirname, 'node_modules/marked')));
 
 app.get('*', (req, res) => {
-    console.log("visited 404 route");
+    console.log("visited 404 route: " + req.url);
     res.render('404', { moment });
 });
 
