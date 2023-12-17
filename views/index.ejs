@@ -32,13 +32,13 @@
 </header>
 
 <div class="carousel-inner" style="z-index: 1;" id="carousel">
-    <div class="carousel-item">
-        <img src="img/Mountainbike.webp" alt="Image 2">
-    </div>
-    <div class="carousel-item">
-        <img src="img/Drawing.webp" alt="Image 3">
-    </div>
+    <% images.forEach((image, index) => { %>
+        <div class="carousel-item <%= index === 0 ? 'active' : '' %>">
+            <img src="/img/<%= image %>" alt="Image <%= index + 1 %>">
+        </div>
+    <% }) %>
 </div>
+
 <main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-10 relative">
     <section id="about" class="md:mb-24 mb-16">
         <h2 class="text-3xl font-bold mb-4">About Me</h2>

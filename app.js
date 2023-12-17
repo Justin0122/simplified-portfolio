@@ -19,6 +19,7 @@ app.get('/', async (req, res) => {
     console.log("visited root route");
     try {
         const currentTime = Date.now();
+        const images = [];
 
         if (!cachedRepos || !lastFetched || currentTime - lastFetched > CACHE_DURATION) {
             const octokit = new Octokit({
@@ -28,7 +29,13 @@ app.get('/', async (req, res) => {
             lastFetched = currentTime;
         }
 
-        res.render('index', { repos: cachedRepos, moment });
+        const fs = require('fs');
+        fs.readdirSync('./public/img').forEach(file => {
+            images.push(file);
+        });
+        images.sort(() => Math.random() - 0.5);
+
+        res.render('index', { repos: cachedRepos, moment, images: images });
     } catch (error) {
         console.error("Error handling root route:", error);
         res.status(500).send('Internal Server Error');
