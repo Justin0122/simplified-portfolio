@@ -8,11 +8,24 @@ The objective behind this repository is to create a streamlined version of my ex
 
 One of the significant differences from the Laravel version is the use of the GitHub API to automatically fetch and populate my projects, enabling a more dynamic and efficient way of showcasing my work.
 
+### Template-Friendly Design
+
+Moreover, this project is structured to serve as a versatile template for individuals aiming to establish their own portfolio websites. The clear separation between frontend and backend functionalities, coupled with the modularity of the codebase, ensures ease of adaptation. Developers can leverage this repository as a starting point to design and customize their frontend, tailor server functionalities, and effortlessly integrate their own content.
+
+### Key Features:
+- **Frontend Customization:** Simple and adaptable HTML structure, allowing easy customization and styling for personal portfolios.
+- **Efficient Backend Integration:** Express.js backend for managing server functionalities, enabling easy modification and extension.
+- **GitHub API Integration:** Automatic project population through the GitHub API, providing a dynamic display of work.
+
+This project is designed to be accessible and modifiable for developers of various skill levels, offering a structured foundation to craft personalized portfolio websites.
+
+
+
 ## Getting Started
 
 ### Prerequisites
 
-Ensure you have Node.js installed on your system.
+Ensure you have Node.js installed on your system. If not, you can download it [here](https://nodejs.org/en/download/).
 
 ### Installation
 
@@ -32,7 +45,7 @@ Ensure you have Node.js installed on your system.
 
 ## Github integration
 
-This simplified portfolio website utilizes the GitHub API to automatically fetch and display my projects. The server-side logic retrieves project data from my GitHub account, eliminating the need to manually add projects to the portfolio. It automatically updates hourly to ensure that the projects are up-to-date.
+This portfolio website utilizes the GitHub API to automatically fetch and display my projects. The server-side logic retrieves project data from my GitHub account, eliminating the need to manually add projects to the portfolio. It automatically updates hourly to ensure that the projects are up-to-date and to minimize the number of API calls.
 
 ## Built With
 
