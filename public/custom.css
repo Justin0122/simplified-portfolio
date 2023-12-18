@@ -118,3 +118,7 @@ h2, h1 {
     text-shadow: none;
     color: #3e627a;
 }
+
+.header{
+    z-index: 10;
+}
