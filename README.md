@@ -8,6 +8,8 @@ The objective behind this repository is to create a streamlined version of my ex
 
 One of the significant differences from the Laravel version is the use of the GitHub API to automatically fetch and populate my projects, enabling a more dynamic and efficient way of showcasing my work.
 
+Furthermore, this project serves as an experimental ground, facilitating exploration and experimentation with a variety of tools and technologies, including Vite, EJS, and more. This experimentation allows for the exploration of innovative methods and optimizations to enhance the website's performance and user experience.
+
 ### Template-Friendly Design
 
 Moreover, this project is structured to serve as a versatile template for individuals aiming to establish their own portfolio websites. The clear separation between frontend and backend functionalities, coupled with the modularity of the codebase, ensures ease of adaptation. Developers can leverage this repository as a starting point to design and customize their frontend, tailor server functionalities, and effortlessly integrate their own content.
@@ -16,6 +18,7 @@ Moreover, this project is structured to serve as a versatile template for indivi
 - **Frontend Customization:** Simple and adaptable HTML structure, allowing easy customization and styling for personal portfolios.
 - **Efficient Backend Integration:** Express.js backend for managing server functionalities, enabling easy modification and extension.
 - **GitHub API Integration:** Automatic project population through the GitHub API, providing a dynamic display of work.
+- **Hot Reloading:** Automatic reloading of the server and frontend when changes are detected, ensuring a seamless development experience.
 
 This project is designed to be accessible and modifiable for developers of various skill levels, offering a structured foundation to craft personalized portfolio websites.
 
@@ -35,13 +38,65 @@ Ensure you have Node.js installed on your system. If not, you can download it [h
    cd portfolio
     ```
 2. **Install Dependencies:**
-3. ```bash
-   npm install
-   ```
-4. **Start the Server:**
    ```bash
-   node app.js
+    npm install
    ```
+
+## Usage
+1. **Start the Server:**
+   ```bash
+    npm start
+    ```
+   <sup>node app.js</sup>
+
+2. **Development Mode:**
+   ```bash
+    npm run dev
+    ```
+   <sup>concurrently "npm run frontend" "npm run tailwind" "npm run watch:ejs" "npm run server"</sup>
+<details>
+
+<summary>Development Mode</summary>
+
+This project utilizes node --watch to automatically restart the server when changes are detected. It will also run npx tailwind to monitor changes to the frontend files and automatically recompile the CSS.
+</details>
+
+## Individual Commands
+<details>
+<summary>Individual Commands</summary>
+
+### Compile Tailwind Styles
+
+```bash 
+npm run tailwind
+```
+<sup>npx tailwindcss -i ./src/input.css -o ./public/style.css --watch</sup>
+
+### Watch EJS and Auto-Refresh Browser
+
+```bash
+npm run watch:ejs
+```
+<sup>browser-sync start --proxy 'http://localhost:3000' --files 'views/*.ejs, public/**/*.ejs' --no-open --no-notify --no-ui --port 3000</sup>
+
+### Vite
+
+```bash
+npm run frontend
+```
+<sup>vite</sup>
+
+### Watch Server
+
+```bash
+npm run server
+```
+<sup>node --watch app.js</sup>
+</details>
+
+
+
+
 
 ## Github integration
 
