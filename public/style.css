@@ -609,10 +609,6 @@ video {
   margin-top: auto;
 }
 
-.block {
-  display: block;
-}
-
 .inline-block {
   display: inline-block;
 }
@@ -1173,11 +1169,6 @@ video {
   .dark\:text-purple-500 {
     --tw-text-opacity: 1;
     color: rgb(168 85 247 / var(--tw-text-opacity));
-  }
-
-  .dark\:text-blue-900 {
-    --tw-text-opacity: 1;
-    color: rgb(30 58 138 / var(--tw-text-opacity));
   }
 
   .dark\:hover\:bg-gray-800:hover {
