@@ -25,7 +25,7 @@
 
 <body id="randomGradientBody"
       class="bg-gradient-to-r dark:from-indigo-900 dark:to-purple-700 text-black dark:text-gray-300 transition duration-300 ease-in-out from-gray-100 to-purple-200">
-<header class="header md:sticky top-0 bg-gray-900 shadow w-full py-4 px-6 bg-opacity-80 bg-blur">
+<header class="header md:sticky top-0 bg-gray-900 shadow w-full py-4 px-6 bg-opacity-80 bg-blur z-10 relative">
     <nav class="flex items-center justify-between">
         <div class="text-2xl font-bold"><%- name %></div>
         <%- include('../public/components/links', {variant:'compact'}); %>
@@ -40,7 +40,7 @@
     <% }) %>
 </div>
 
-<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-10">
+<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-2">
     <section id="about" class="md:mb-24 mb-16 relative">
         <span class="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-900">About Me</span>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
