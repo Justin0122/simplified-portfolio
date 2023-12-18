@@ -1,9 +1,9 @@
 {
   "scripts": {
-    "dev": "npm run frontend & npm run tailwind & npm run watch:ejs & npm run server",
+    "dev": "concurrently \"npm run frontend\" \"npm run tailwind\" \"npm run watch:ejs\" \"npm run server\"",
     "frontend": "vite",
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./public/style.css --watch",
-    "watch:ejs": "browser-sync start --proxy 'http://localhost:3001' --files 'views/*.ejs, public/components/*.ejs' --no-open --no-notify --no-ui --port 3000",
+    "watch:ejs": "browser-sync start --proxy 'http://localhost:3001' --files 'views/*.ejs, public/**/*.ejs' --no-open --no-notify --no-ui --port 3000",
     "server": "node --watch app.js",
     "start": "node app.js"
   },
