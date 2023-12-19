@@ -1,20 +1,9 @@
 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
     <ul class="flex space-x-4">
-        <a href="https://github.com/<%- github %>" target="_blank">
-            <img src="svg/github.svg" alt="GitHub">
-        </a>
-        <a href="<%- linkedin %>" target="_blank">
-            <img src="svg/linkedin.svg" alt="LinkedIn">
-        </a>
-        <a href="https://www.instagram.com/justin._x3/" target="_blank">
-            <img src="svg/instagram.svg" alt="Instagram">
-        </a>
-        <a href="https://packagist.org/packages/<%- packagist %>" target="_blank">
-            <img src="svg/packagist.svg" alt="Packagist">
-        </a>
-        <a href="mailto:<%- email %>" target="_blank"
-           class="hover:text-purple-300 transition duration-300">
-            <img src="svg/mailto.svg" alt="Mailto">
-        </a>
+        <% links.forEach(link => { %>
+            <a href="<%- link.url %>" target="_blank">
+                <img src="<%- link.icon %>" alt="<%- link.alt %>">
+            </a>
+        <% }) %>
     </ul>
 </div>

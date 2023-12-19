@@ -42,10 +42,12 @@ app.get('/', async (req, res) => {
             name: process.env.FULL_NAME,
             avatar_url: process.env.PROFILE_PIC_URL,
             website: process.env.WEBSITE_URL,
-            github: process.env.GITHUB_USERNAME,
-            linkedin: process.env.LINKEDIN_URL,
-            packagist: process.env.PACKAGIST_USERNAME,
-            email: process.env.EMAIL
+            links: [
+                { url: process.env.GITHUB_URL, icon: 'svg/github.svg', alt: 'GitHub' },
+                { url: process.env.LINKEDIN_URL, icon: 'svg/linkedin.svg', alt: 'LinkedIn' },
+                { url: process.env.PACKAGIST_URL, icon: 'svg/packagist.svg', alt: 'Packagist' },
+                { url: `mailto:${process.env.EMAIL}`, icon: 'svg/mailto.svg', alt: 'Mailto' },
+            ]
         };
 
         res.render('index', dataToSend);
