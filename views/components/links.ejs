@@ -1,8 +1,8 @@
 <div class="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
     <ul class="flex space-x-4">
         <% links.forEach(link => { %>
-            <a href="<%- link.url %>" target="_blank">
-                <img src="<%- link.icon %>" alt="<%- link.alt %>">
+            <a href="<%- link.url %>" target="_blank" class="max-h-12 max-w-12">
+                <img src="<%- link.icon %>" alt="<%- link.alt %>" class="w-8 h-8">
             </a>
         <% }) %>
     </ul>

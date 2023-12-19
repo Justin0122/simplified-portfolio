@@ -1,7 +1,6 @@
 {
   "scripts": {
-    "dev": "concurrently \"npm run frontend\" \"npm run tailwind\" \"npm run watch:ejs\" \"npm run server\"",
-    "frontend": "vite",
+    "dev": "concurrently \"npm run tailwind\" \"npm run watch:ejs\" \"npm run server\"",
     "tailwind": "npx tailwindcss -i ./src/input.css -o ./public/style.css --watch",
     "watch:ejs": "browser-sync start --proxy 'http://localhost:3001' --files 'views/*.ejs, public/**/*.ejs' --no-open --no-notify --no-ui --port 3000",
     "server": "node --watch app.js",
@@ -10,8 +9,7 @@
   "devDependencies": {
     "browser-sync": "^2.23.7",
     "concurrently": "^8.2.2",
-    "tailwindcss": "^3.3.5",
-    "vite": "^5.0.10"
+    "tailwindcss": "^3.3.5"
   },
   "dependencies": {
     "@octokit/core": "^5.0.1",
