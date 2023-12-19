@@ -28,7 +28,7 @@
 <header class="header md:sticky top-0 bg-gray-900 shadow w-full py-4 px-6 bg-opacity-80 bg-blur z-10 relative">
     <nav class="flex items-center justify-between">
         <div class="text-2xl font-bold text-white dark:text-gray-300"><%- name %></div>
-        <%- include('../public/components/links'); %>
+        <%- include('components/links'); %>
     </nav>
 </header>
 
@@ -52,7 +52,7 @@
             <div class="w-full sm:w-2/3 dark:bg-gray-900 bg-opacity-50 rounded-lg p-4 shadow bg-blur cursor-default bg-gray-100"
                  id="aboutText">
                 <p class="text-lg">
-                    <%- include('../public/components/about-me'); %>
+                    <%- include('components/about-me'); %>
                 </p>
             </div>
         </div>
@@ -61,7 +61,7 @@
     <section id="certificates">
         <h2 class="text-3xl font-bold mb-4">Certificates</h2>
         <div id="certificateList" class="grid sm:grid-cols-2 md:grid-cols-6 gap-4">
-            <%- include('../public/components/certificates'); %>
+            <%- include('components/certificates'); %>
         </div>
     </section>
 
@@ -79,20 +79,20 @@
         <h2 class="text-3xl font-bold mb-4">Aspirations</h2>
         <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-6 transition duration-300 ease-in-out transform hover:scale-105">
             <p class="text-gray-700 dark:text-gray-300 mb-4">
-                <%- include('../public/components/aspirations'); %>
+                <%- include('components/aspirations'); %>
             </p>
         </div>
     </section>
 
     <section id="contact" class="mt-8">
-        <%- include('../public/components/contact-form'); %>
+        <%- include('components/contact-form'); %>
     </section>
 </main>
 
 <footer id="pageFooter"
         class="bg-gray-900 text-white py-6 text-center bottom-0 w-full bg-opacity-80 shadow bg-blur">
     <div class="flex flex-col sm:flex-row justify-center items-center md:hidden" id="footerLinks">
-        <%- include('../public/components/links'); %>
+        <%- include('components/links'); %>
     </div>
     <p>&copy;
         <script>document.write(new Date().getFullYear());</script>

@@ -1,6 +1,6 @@
 module.exports = {
   mode: 'jit',
-  content: ['./views/*.ejs', './public/**/*.ejs'],
+  content: ['./views/*.ejs', './views/**/*.ejs'],
   theme: {
     extend: {},
   },

@@ -649,10 +649,6 @@ video {
   max-width: 72rem;
 }
 
-.max-w-2xl {
-  max-width: 42rem;
-}
-
 .grow {
   flex-grow: 1;
 }
