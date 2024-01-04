@@ -16,3 +16,25 @@ Apart from coding, I enjoy mountain biking, drawing, and playing video games.
 <span class="text-lg font-bold">My skills:</span>
 <br>
 <span class="text-lg font-light">Laravel, Livewire, Tailwind CSS, HTML, CSS, JavaScript, PHP, MySQL, Git, GitHub, Linux, Windows, and more.</span>
+
+<br><br>
+
+<span class="text-lg font-bold">Overall Language Distribution:</span>
+<div id="stats" class="flex flex-wrap space-x-2"></div>
+<script>
+    const stats = `<%- readmeContent.slice(readmeContent.indexOf('## GitHub Stats'), readmeContent.indexOf('Last update:', readmeContent.indexOf('## GitHub Stats'))).trim() %>`
+        .split('\n')
+        .filter(stat => stat.includes('!['));
+
+    const imagesHTML = stats.map(stat => {
+        const regex = /!\[([^\]]+)\]\(([^\)]+)\)/g;
+        const matches = regex.exec(stat);
+        if (matches) {
+            const [, alt, src] = matches;
+            return `<img class="pt-2" src="${src}" alt="${alt}" />`;
+        }
+        return '';
+    }).join('');
+    document.getElementById('stats').innerHTML = imagesHTML;
+</script>
+
