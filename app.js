@@ -43,7 +43,6 @@ app.get('/', async (req, res) => {
             avatar_url: process.env.PROFILE_PIC_URL,
             website: process.env.WEBSITE_URL,
             links: [
-                { url: process.env.WEBSITE_URL, icon: process.env.WEBSITE_URL + '/favicon.ico', alt: 'Website' },
                 { url: process.env.GITHUB_URL, icon: 'svg/github.svg', alt: 'GitHub' },
                 { url: process.env.LINKEDIN_URL, icon: 'svg/linkedin.svg', alt: 'LinkedIn' },
                 { url: process.env.PACKAGIST_URL, icon: 'svg/packagist.svg', alt: 'Packagist' },

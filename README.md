@@ -1,14 +1,14 @@
-# Simplified Portfolio Website
+# Portfolio Website
 
-This project serves as a simplified rendition of my comprehensive [portfolio website](https://justinjongstra.nl). It's constructed using the powerful combination of [EJS](https://ejs.co/) for templating and [Express](https://expressjs.com/) for server-side operations.
+This project originally served as a simplified rendition of my old portfolio website made with Laravel Livewire. It's constructed using the powerful combination of [EJS](https://ejs.co/) for templating and [Express](https://expressjs.com/) for server-side operations.
 
 ## Overview
 
-The objective behind this repository is to create a streamlined version of my existing portfolio website, focusing primarily on frontend architecture and user interaction. Instead of the Laravel framework used in the original website, this version leverages Express.js to manage server functionalities and EJS for dynamic HTML content generation. 
+The objective behind this repository is to create a streamlined version of my existing portfolio website, focusing primarily on frontend architecture and user interaction. Instead of the Laravel framework used in the original website, this version leverages Express.js to manage server functionalities and EJS for dynamic HTML content generation.
 
 One of the significant differences from the Laravel version is the use of the GitHub API to automatically fetch and populate my projects, enabling a more dynamic and efficient way of showcasing my work.
 
-Furthermore, this project serves as an experimental ground, facilitating exploration and experimentation with a variety of tools and technologies, including Hot Reloading, EJS, and more. This experimentation allows for the exploration of innovative methods and optimizations to enhance the website's performance and user experience.
+Furthermore, this project serves as an experimental ground, facilitating exploration and experimentation with a variety of tools and technologies, including Vite, EJS, and more. This experimentation allows for the exploration of innovative methods and optimizations to enhance the website's performance and user experience.
 
 ### Template-Friendly Design
 
@@ -53,7 +53,7 @@ Ensure you have Node.js installed on your system. If not, you can download it [h
    ```bash
     npm run dev
     ```
-   <sup>"dev": "concurrently \"npm run tailwind\" \"npm run watch:ejs\" \"npm run server\"</sup>
+   <sup>concurrently "npm run frontend" "npm run tailwind" "npm run watch:ejs" "npm run server"</sup>
 <details>
 
 <summary>Development Mode</summary>
@@ -79,6 +79,12 @@ npm run watch:ejs
 ```
 <sup>browser-sync start --proxy 'http://localhost:3000' --files 'views/*.ejs, public/**/*.ejs' --no-open --no-notify --no-ui --port 3000</sup>
 
+### Vite
+
+```bash
+npm run frontend
+```
+<sup>vite</sup>
 
 ### Watch Server
 
@@ -87,9 +93,6 @@ npm run server
 ```
 <sup>node --watch app.js</sup>
 </details>
-
-
-
 
 
 ## Github integration
