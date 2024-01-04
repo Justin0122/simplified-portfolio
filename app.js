@@ -12,6 +12,7 @@ const port = 3001;
 app.set('view engine', 'ejs');
 
 let cachedRepos = null;
+let cachedReadme = null;
 let lastFetched = null;
 const CACHE_DURATION = 3600000; // update repos every hour
 
@@ -25,6 +26,7 @@ app.get('/', async (req, res) => {
             const octokit = new Octokit({
                 auth: process.env.GITHUB_TOKEN,
             });
+            readmeContent = await githubData.fetchReadme(process.env.GITHUB_USERNAME);
             cachedRepos = await githubData.getRepositories(octokit);
             lastFetched = currentTime;
         }
@@ -34,6 +36,7 @@ app.get('/', async (req, res) => {
             images.push(file);
         });
         images.sort(() => Math.random() - 0.5);
+
 
         const dataToSend = {
             repos: cachedRepos,
@@ -47,9 +50,9 @@ app.get('/', async (req, res) => {
                 { url: process.env.LINKEDIN_URL, icon: 'svg/linkedin.svg', alt: 'LinkedIn' },
                 { url: process.env.PACKAGIST_URL, icon: 'svg/packagist.svg', alt: 'Packagist' },
                 { url: `mailto:${process.env.EMAIL}`, icon: 'svg/mailto.svg', alt: 'Mailto' },
-            ]
+            ],
+            readmeContent,
         };
-
         res.render('index', dataToSend);
 
     } catch (error) {

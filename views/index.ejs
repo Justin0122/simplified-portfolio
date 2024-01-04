@@ -40,7 +40,7 @@
     <% }) %>
 </div>
 
-<main class="max-w-6xl mx-auto py-8 sm:px-8 px-4 z-2">
+<main class="max-w-6xl mx-auto py-2 sm:px-8 px-4 z-2">
     <section id="about" class="md:mb-24 mb-16 relative">
         <span class="text-3xl font-bold mb-4 text-gray-800 dark:text-gray-900">About Me</span>
         <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
@@ -52,8 +52,9 @@
             <div class="w-full sm:w-2/3 dark:bg-gray-900 bg-opacity-50 rounded-lg p-4 shadow bg-blur cursor-default bg-gray-100"
                  id="aboutText">
                 <p class="text-lg">
-                    <%- include('components/about-me'); %>
+                    <%- include('components/about-me', { githubStatsSection: readmeContent }); %>
                 </p>
+
             </div>
         </div>
     </section>
