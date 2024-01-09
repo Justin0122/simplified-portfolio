@@ -1,7 +1,5 @@
 const express = require('express');
 const path = require('path');
-const { Octokit } = require("@octokit/rest");
-const githubData = require("./app/githubData.js");
 const moment = require('moment');
 require('dotenv').config();
 
@@ -11,10 +9,9 @@ const port = 3001;
 // Set EJS as the view engine
 app.set('view engine', 'ejs');
 
-let cachedRepos = null;
-let cachedReadme = null;
-let lastFetched = null;
-const CACHE_DURATION = 3600000; // update repos every hour
+let repos = null;
+
+const baseUrl = 'http://localhost:3002/api';
 
 app.get('/', async (req, res) => {
     console.log("visited root route");
@@ -22,14 +19,14 @@ app.get('/', async (req, res) => {
         const currentTime = Date.now();
         const images = [];
 
-        if (!cachedRepos || !lastFetched || currentTime - lastFetched > CACHE_DURATION) {
-            const octokit = new Octokit({
-                auth: process.env.GITHUB_TOKEN,
-            });
-            readmeContent = await githubData.fetchReadme(process.env.GITHUB_USERNAME);
-            cachedRepos = await githubData.getRepositories(octokit);
-            lastFetched = currentTime;
-        }
+        const url = `${baseUrl}/repositories`;
+        const response = await fetch(url);
+        repos = await response.json();
+
+        const readmeUrl = `${baseUrl}/readme`;
+        const readmeResponse = await fetch(readmeUrl);
+
+        const readmeContent = await readmeResponse.text();
 
         const fs = require('fs');
         fs.readdirSync('./public/img').forEach(file => {
@@ -39,7 +36,7 @@ app.get('/', async (req, res) => {
 
 
         const dataToSend = {
-            repos: cachedRepos,
+            repos: repos,
             moment,
             images,
             name: process.env.FULL_NAME,
