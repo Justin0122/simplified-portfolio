@@ -1,17 +1,12 @@
 async function fetchReadme(GITHUB_USERNAME) {
     try {
         const response = await fetch(`https://raw.githubusercontent.com/Justin0122/${GITHUB_USERNAME}/master/README.md`);
-        const markdown = await response.text();
-
-        return markdown;
+        return await response.text();
     } catch (error) {
         console.error('Error fetching readme:', error);
     }
 
 }
-
-const { Octokit } = require('@octokit/rest');
-
 
 async function getLanguagesForRepo(octokit, owner, repo) {
     try {
