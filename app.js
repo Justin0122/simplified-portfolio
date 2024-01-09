@@ -12,24 +12,36 @@ const port = 3001;
 app.set('view engine', 'ejs');
 
 let cachedRepos = null;
+let lastReposFetched = null;
+const REPOS_CACHE_DURATION = 3600000; // update repos every hour
+
 let cachedReadme = null;
-let lastFetched = null;
-const CACHE_DURATION = 3600000; // update repos every hour
+let lastReadmeFetched = null;
+const README_CACHE_DURATION = 3600000;
 
 app.get('/', async (req, res) => {
-    console.log("visited root route");
-    let readmeContent;
     try {
         const currentTime = Date.now();
+        let readmeContent = null;
         const images = [];
 
-        if (!cachedRepos || !lastFetched || currentTime - lastFetched > CACHE_DURATION) {
+        if (!cachedReadme || !lastReadmeFetched || currentTime - lastReadmeFetched > README_CACHE_DURATION) {
             const octokit = new Octokit({
                 auth: process.env.GITHUB_TOKEN,
             });
             readmeContent = await githubData.fetchReadme(process.env.GITHUB_USERNAME);
+            cachedReadme = readmeContent;
+            lastReadmeFetched = currentTime;
+        } else {
+            readmeContent = cachedReadme;
+        }
+
+        if (!cachedRepos || !lastReposFetched || currentTime - lastReposFetched > REPOS_CACHE_DURATION) {
+            const octokit = new Octokit({
+                auth: process.env.GITHUB_TOKEN,
+            });
             cachedRepos = await githubData.getRepositories(octokit);
-            lastFetched = currentTime;
+            lastReposFetched = currentTime;
         }
 
         const fs = require('fs');
