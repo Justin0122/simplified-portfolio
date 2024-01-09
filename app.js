@@ -18,6 +18,7 @@ const CACHE_DURATION = 3600000; // update repos every hour
 
 app.get('/', async (req, res) => {
     console.log("visited root route");
+    let readmeContent;
     try {
         const currentTime = Date.now();
         const images = [];
@@ -44,12 +45,11 @@ app.get('/', async (req, res) => {
             images,
             name: process.env.FULL_NAME,
             avatar_url: process.env.PROFILE_PIC_URL,
-            website: process.env.WEBSITE_URL,
             links: [
-                { url: process.env.GITHUB_URL, icon: 'svg/github.svg', alt: 'GitHub' },
-                { url: process.env.LINKEDIN_URL, icon: 'svg/linkedin.svg', alt: 'LinkedIn' },
-                { url: process.env.PACKAGIST_URL, icon: 'svg/packagist.svg', alt: 'Packagist' },
-                { url: `mailto:${process.env.EMAIL}`, icon: 'svg/mailto.svg', alt: 'Mailto' },
+                {url: process.env.GITHUB_URL, icon: 'svg/github.svg', alt: 'GitHub'},
+                {url: process.env.LINKEDIN_URL, icon: 'svg/linkedin.svg', alt: 'LinkedIn'},
+                {url: process.env.PACKAGIST_URL, icon: 'svg/packagist.svg', alt: 'Packagist'},
+                {url: `mailto:${process.env.EMAIL}`, icon: 'svg/mailto.svg', alt: 'Mailto'},
             ],
             readmeContent,
         };
