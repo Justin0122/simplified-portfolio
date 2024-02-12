@@ -61,6 +61,7 @@ app.get('/', async (req, res) => {
                 {url: process.env.GITHUB_URL, icon: 'svg/github.svg', alt: 'GitHub'},
                 {url: process.env.LINKEDIN_URL, icon: 'svg/linkedin.svg', alt: 'LinkedIn'},
                 {url: process.env.PACKAGIST_URL, icon: 'svg/packagist.svg', alt: 'Packagist'},
+                {url: process.env.NPM_URL, icon: 'svg/npm.svg', alt: 'NPM'},
                 {url: `mailto:${process.env.EMAIL}`, icon: 'svg/mailto.svg', alt: 'Mailto'},
             ],
             readmeContent,
